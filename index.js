@@ -29,6 +29,13 @@ async function run() {
     const result=await cursor.toArray()
     res.send(result);
    }) 
+
+   app.post('/events',async(req,res)=>{
+       const event=req.body
+       console.log(event);
+       const result=await eventCollection.insertOne(event)
+       res.send(result)
+   })
    
   } finally {
     // await client.close();
